@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { ToastContainer} from 'react-toastify'
 
 function Signup() {
   return (
@@ -23,6 +24,7 @@ function Signup() {
           <Link to='/login'>Login</Link>
         </span>
       </form>
+      <ToastContainer/>
 
     </div>
   )
