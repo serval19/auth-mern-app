@@ -16,6 +16,7 @@ function Signup() {
     copyLoginInfo[name]=value
     setloginInfo(copyLoginInfo)
   }
+  console.log(loginInfo);
   return (
     <div className='signup'>
       <h1>Signup</h1>
