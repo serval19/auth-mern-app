@@ -17,11 +17,26 @@ function Signup() {
     copyLoginInfo[name]=value
     setloginInfo(copyLoginInfo)
   }
-  const handleSignup=(e)=>{
+  const handleSignup=async (e)=>{
     e.preventDefault();
     const {name,email,password}=loginInfo;
     if(!name || !email || !password){
        return handleError('All fields are required!')
+    }
+    try{
+      const url="http://localhost:8080/auth/signup"
+      const response=await fetch(url,{
+        method: 'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(loginInfo)
+      })
+      const result=await response.json()
+      console.log(result);
+    }
+    catch(err){
+      handleError(err);
     }
   }
   return (
