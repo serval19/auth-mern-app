@@ -33,9 +33,11 @@ function Login() {
         body:JSON.stringify(loginInfo)
       })
       const result=await response.json()
-      const { success, message,error,jwtToken,name }=result
+      const { success, message,error,jwToken,name }=result //actual spelling is jwtToken :)
       if(success){
         handleSuccess(message);
+        localStorage.setItem('token',jwToken)
+        localStorage.setItem('loggedInUser',name)
         setTimeout(()=>{
           navigate('/home')
         },1000)
@@ -67,7 +69,7 @@ function Login() {
           <input onChange={handleChange} type='password' name='password'  placeholder='Enter your password'
           value={loginInfo.password}/>
         </div>
-        <button>Signup</button>
+        <button>Login</button>
         <span>Don't have an account?
           <Link to='/signup'>Signup</Link>
         </span>
