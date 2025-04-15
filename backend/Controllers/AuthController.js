@@ -23,7 +23,7 @@ const login=async (req,res)=>{
     try{
         const {email,password}=req.body;
         const user=await UserModel.findOne({email});
-        const errorMessage='Auth failed email or passwrod is incorrect';
+        const errorMessage='Auth failed email or password is incorrect';
         if(!user){
             return res.status(403)
             .json({message: errorMessage,success:false})
