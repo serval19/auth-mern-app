@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify'
 
 function Home() {
   const [loggedInUser, setLoggedInuser] = useState("")
+  const [products, setProducts]=useState('')
   const navigate = useNavigate()
   
   useEffect(() => {
@@ -31,6 +32,7 @@ function Home() {
       const response = await fetch(url,headers)
       const result = await response.json()
       console.log(result)
+      setProducts(result)
     } catch (err) {
       handleError(err)
     }
@@ -44,6 +46,16 @@ function Home() {
     <div>
       <h1>{loggedInUser}</h1>
       <button onClick={handleLogout}>Logout</button>
+      <div>
+        {
+          products&&products.map((item,index)=>(
+            <ul key={index}>
+              <span>{item.name} : {item.price}</span>
+            </ul>
+
+          ))
+        }
+      </div>
       <ToastContainer/>
     </div>
   )
