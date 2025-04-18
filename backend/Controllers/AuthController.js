@@ -1,5 +1,5 @@
 const bcrypt=require('bcrypt');
-const UserModel=require('../Models/User')
+const UserModel=require('../Models/user')
 const jwt=require('jsonwebtoken');
 const signup=async (req,res)=>{
     try{
